@@ -16,6 +16,18 @@ const theme = createTheme({
       main: "#dc004e",
     },
   },
+  components: {
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: "xl",
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        variant: "contained",
+      },
+    },
+  },
 });
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
