@@ -15,3 +15,14 @@ export const createImage = async (data: any) => {
   revalidateTag("images");
   return await response.json();
 };
+
+export const deleteImage = async (id: any) => {
+  const response = await fetch(
+    `https://codmin-image-gallery-api.vercel.app/api/v1/images/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
+  revalidateTag("images");
+  return await response.json();
+};

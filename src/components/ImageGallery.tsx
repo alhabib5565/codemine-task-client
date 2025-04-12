@@ -28,7 +28,7 @@ const ImageGallery = ({ images }: { images: TImage[] }) => {
       {images.map((image, index) => (
         <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={index}>
           <Card sx={{ position: "relative" }}>
-            <ImageDeleteBtn index={index} />
+            <ImageDeleteBtn id={image._id} />
             <CardActionArea onClick={() => handleClickOpen(image)}>
               <CardMedia
                 component="img"

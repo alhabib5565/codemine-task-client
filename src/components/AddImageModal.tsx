@@ -15,8 +15,8 @@ import {
 import { CancelOutlined } from "@mui/icons-material";
 import UploadImage from "./UploadImage";
 import ImagePreview from "./ImagePreview";
-import { TCategory } from "./PageTobar";
-import { createImage } from "@/actions/createImage";
+import { TCategory } from "./PageTopbar";
+import { createImage } from "@/actions/image";
 import Swal from "sweetalert2";
 
 type TImageData = {
