@@ -5,7 +5,7 @@ import { IconButton } from "@mui/material";
 import React, { ReactNode } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
-export type TCommonModalOpenProps = {
+export type TModalOpenProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   open: boolean;
   title?: string;
@@ -16,7 +16,7 @@ const CommonModal = ({
   open,
   title,
   children,
-}: TCommonModalOpenProps & { children: ReactNode }) => {
+}: TModalOpenProps & { children: ReactNode }) => {
   const handleClose = () => {
     setOpen(false);
   };
