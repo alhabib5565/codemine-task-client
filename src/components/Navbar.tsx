@@ -7,6 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,6 +52,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Navbar = () => {
+  const router = useRouter();
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
+  const params = React.useMemo(() => {
+    return new URLSearchParams(searchParams);
+  }, [searchParams]);
+  const [searchTerm, setSearchTerm] = React.useState(
+    params.get("searchTerm") || ""
+  );
+
+  React.useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      params.set("searchTerm", searchTerm);
+      router.replace(`${pathName}?${params.toString()}`);
+    }, 500);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchTerm, pathName, router, searchParams, params]);
+
+  const handleChange = (value: string) => {
+    setSearchTerm(value);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -68,6 +92,8 @@ export const Navbar = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              value={searchTerm}
+              onChange={(e) => handleChange(e.target.value)}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />

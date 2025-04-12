@@ -126,7 +126,7 @@ const AddImageModal = ({
             renderInput={(params) => <TextField {...params} label="Category" />}
           />
           <Box>
-            <Stack direction="row" gap={2} flexWrap={"wrap"}>
+            <Stack direction="row" gap={2} flexWrap={"wrap"} mb={1}>
               {imageData.tags.map((tag, i) => (
                 <Typography
                   variant="body1"

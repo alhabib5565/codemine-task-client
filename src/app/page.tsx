@@ -31,7 +31,6 @@ const Home = async ({ searchParams }: TSearchParams) => {
     }
   );
   const images = await animalResponse.json();
-  console.log({ images });
   return (
     <div>
       <Navbar />
